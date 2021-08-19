@@ -1,2 +1,5 @@
-OLED_DRIVER_ENABLE  = yes
-RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
+EXTRAFLAGS += -flto  # enable link time optimization to save space
+
+OLED_DRIVER_ENABLE = yes
+RGBLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = yes
