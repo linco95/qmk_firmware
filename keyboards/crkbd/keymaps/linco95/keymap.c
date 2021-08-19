@@ -152,10 +152,13 @@ void oled_render_TE_logo(void) {
 //     oled_write_P(crkbd_logo, false);
 // }
 
-void oled_render_custom_text(void) {
+void oled_render_custom_text(void) { 
+char wpm_str[10];
+    sprintf(wpm_str, "WPM: %03d", get_current_wpm());
+
     oled_write_ln_P(PSTR(""), false);
     oled_write_ln_P(PSTR("Andreas Kjellqvist"), false);
-    oled_write_ln_P(PSTR(""), false);
+    oled_write_ln(wpm_str, false);	
 }
 
 void oled_task_user(void) {
@@ -165,7 +168,7 @@ void oled_task_user(void) {
         // oled_render_keylog();
         // oled_render_TE_logo();
     } else {
-        // oled_render_TE_logo();
+        oled_render_TE_logo();
     }
 }
 
