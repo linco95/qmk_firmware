@@ -19,6 +19,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
+// UNICODE MAP
+enum unicode_names {
+    SWEAA,
+    SWEAE,
+    SWEOE,
+    _SWEAA,
+    _SWEAE,
+    _SWEOE
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [SWEAA]  = 0x00C5,  // Å
+    [SWEAE] = 0x00C4,  // Ä
+    [SWEOE]  = 0xD5, // Ö
+    [_SWEAA] = 0x00E5, // å
+    [_SWEAE] = 0x00E4, // ä
+    [_SWEOE] = 0x00F6  // ö
+};
+
+#define sweAA XP(UC(_SWEAA), UC(SWEAA))
+#define sweAE XP(UC(_SWEAE), UC(SWEAE))
+#define sweOE XP(UC(_SWEOE), UC(SWEOE))
+
+// LAYERS
 enum crkbd_layers {
     _QWERTY,
     _LOWER,
@@ -44,9 +68,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_LBRACKET, KC_ESC,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, sweAA, KC_ESC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RALT,
+      KC_LSFT, KC_LALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_MNXT, sweOE, sweAE, KC_RALT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT,   KC_DEL, MO(3)
                                       //`--------------------------'  `--------------------------'

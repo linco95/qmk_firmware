@@ -94,3 +94,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Link time optimzation doesn't support these features. disabled to save space
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
+
+#define UNICODE_SELECTED_MODES UC_MAC//, UC_LNX, UC_WINC
